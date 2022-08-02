@@ -165,7 +165,7 @@ class CreateUser extends React.Component {
                                                     <br />
                                                     <FormGroup label="Departamento: *" htmlFor="inputDepartamentId">
                                                         <br />
-                                                        <SelectDepartament onChange={this.inputSelectDepartament} />
+                                                        <SelectDepartament onChange={this.inputSelectDepartament} id="inputIdDepartament"/>
                                                     </FormGroup>
                                                     <br />
                                                     <br />
