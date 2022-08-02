@@ -8,7 +8,7 @@ export default class CommentApiService extends ApiService{
         return this.post('',object);
     }
     update(id,object){
-        return this.put(`/${id}`);
+        return this.put(`/${id}`,object);
     }
     delete(id){
         return super.delete(`/${id}`)
@@ -16,7 +16,7 @@ export default class CommentApiService extends ApiService{
     find(params){
         return this.get(`${params}`);
     }
-    findAll(params){
+    findAll(){
         return this.getAll('');
     }
 }

@@ -12,34 +12,36 @@ import CommentApiService from '../../services/CommentApiService';
 class UpdateComment extends React.Component {
 
     state = {
-        id: 0,
-        title: '',
-        message: '',
-        commentType: '',
-        user:{
-            id: 0
-            // name: '',
-            // email: '',
-            // registration: 0,
-            // role: '',
-            // departamentId: 0
-        },
-        departament:{
-            departamentId: 0
-            // name:''
-        } 
-    }
-    constructor(){
-        super();
-        this.service = new CommentApiService();
-    }
-
+         id: 0,
+         title: '',
+         message: '',
+         commentType: '',
+         user: {
+             id: 0,
+             name: '',
+             email: '',
+             registration: 0,
+             role: '',
+             departamentId: 0
+         },
+         departament: {
+             departamentId: 0,
+             name:''
+         }
+     }
+    
     componentDidMount() {
         const params = this.props.match.params;
         const id = params.id;
         this.findById(id);
-        // this.service.findById(this.props.match.params.id)
-        
+
+         //this.service.findById(this.props.match.params.id)
+
+    }
+    constructor() {
+        super();
+        this.service = new CommentApiService();
+       
     }
 
     // componentWillUnmount(){
@@ -51,7 +53,7 @@ class UpdateComment extends React.Component {
         this.service.find(commentId)
 
             .then(response => {
-                const comment = response.data[0];
+                const comment = response.data;
                 const id = comment.id;
                 const title = comment.title;
                 const message = comment.message;
@@ -59,7 +61,8 @@ class UpdateComment extends React.Component {
                 const user = comment.user;
                 const departament = comment.departament;
 
-                this.setState({ id, title, message, commentType, user, departament });
+                this.setState({ id:id, title:title, message:message, commentType:commentType, user:user, departament:departament});
+                console.log(this.state.id,this.state.departament);
             }
 
             ).catch(error => {
@@ -70,27 +73,31 @@ class UpdateComment extends React.Component {
 
     validate = () => {
         const errors = [];
-    
-        if(!this.state.title){
+
+        if (!this.state.title) {
             errors.push('Campo Título é obrigatório!');
-        } 
+        } else if(!this.state.title.match(/[A-z 0-9]{5,50}$/)) {
+            errors.push('O Título do Comentário deve ter no mínimo 5 e no máximo 50 caracteres!');
+        }
 
-        if(!this.state.message){
+        if (!this.state.message) {
             errors.push('Campo Mensagem é obrigatório!');
-        } 
+        } else if(!this.state.message.match(/[A-z 0-9]{10,255}$/)) {
+            errors.push('A mensagem do Comentário deve ter no mínimo 10 e no máximo 255 caracteres!');
+        }
 
-        if(!this.state.commentType){
+        if (!this.state.commentType) {
             errors.push('É obrigatório informar o Tipo de Comentário!');
         }
-        
+
         return errors;
     };
 
-    update =  () => {
+    update = () => {
 
         const errors = this.validate();
 
-        if(errors.length > 0) {
+        if (errors.length > 0) {
             errors.forEach((message, index) => {
                 showErrorMessage(message);
             });
@@ -103,13 +110,13 @@ class UpdateComment extends React.Component {
                 title: this.state.title,
                 message: this.state.message,
                 commentType: this.state.commentType,
-                // user: this.state.user.id,
-                // departamentId: this.state.departament.id
+                 user: this.state.user.id,
+                 departamentId: this.state.departament.id
             }
         ).then(response => {
             console.log(response);
             showSuccessMessage('Comentário atualizado com sucesso!');
-            this.props.history.push("/viewComments");
+            this.props.history.push('/viewComments');
         }
         ).catch(error => {
             console.log(error.response);
@@ -137,30 +144,35 @@ class UpdateComment extends React.Component {
                                         <div className='bs-component'>
                                             <form>
                                                 <fieldset>
-                                                    <FormGroup label="Id: *" htmlFor="inputId">
+                                                    {/* <FormGroup label="Id: *" htmlFor="inputId">
                                                         <input type="long" id="inputId" disabled={true} className="form-control"
                                                             value={this.state.id} name="id" onChange={(e) => { this.setState({ id: e.target.value }) }} />
                                                     </FormGroup>
-                                                    <br />
+                                                    <br /> */}
+                                                    <p>
+                                                        <small id="messageHelp" className="form-text text-muted">
+                                                            * Todos os campos são obrigatórios.
+                                                        </small>
+                                                    </p>
                                                     <FormGroup label="Título: *" htmlFor="inputTitle">
-                                                        <input type="text" id="inputTitle" className="form-control"
+                                                        <input type="text" id="inputTitle" className="form-control"  placeholder="Digite o título do comentário" 
                                                             value={this.state.title} name="title" onChange={(e) => { this.setState({ title: e.target.value }) }} />
                                                     </FormGroup>
                                                     <br />
                                                     <FormGroup label="Mensagem: *" htmlFor="MessageTextarea" className="form-label mt-4">
-                                                        <textarea type="text" className="form-control" id="MessageTextarea" rows="3" minLength="10" maxlength="255" 
-                                                        placeholder="Digite a sugestão, crítica ou elogio" 
-                                                        value={this.state.message} 
-                                                        onChange={(e) => { this.setState({ message: e.target.value }) }} />
+                                                        <textarea type="text" className="form-control" id="MessageTextarea" rows="3" minLength="10" maxlength="255"
+                                                            placeholder="Digite a sugestão, crítica ou elogio"
+                                                            value={this.state.message}
+                                                            onChange={(e) => { this.setState({ message: e.target.value }) }} />
                                                         <small id="messageHelp" className="form-text text-muted">Seja cordial ao escrever sua crítica, sugestão ou elogio.</small>
                                                     </FormGroup>
                                                     <br />
                                                     <FormGroup label="Tipo de Comentário: *" htmlFor="selectCommentType" className="form-label mt-4">
                                                         <select className="form-select" id="selectCommentType" value={this.state.commentType} name="commentType" onChange={(e) => { this.setState({ commentType: e.target.value }) }}>
                                                             <option>Selecione uma opção</option>
-                                                            <option value = "REVIEW">CRÍTICA</option>
-                                                            <option value = "SUGGESTION">SUGESTÃO</option>
-                                                            <option value = "COMPLIMENT">ELOGIO</option>
+                                                            <option value="REVIEW">CRÍTICA</option>
+                                                            <option value="SUGGESTION">SUGESTÃO</option>
+                                                            <option value="COMPLIMENT">ELOGIO</option>
                                                         </select>
                                                     </FormGroup>
                                                     <br />
