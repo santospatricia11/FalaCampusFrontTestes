@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
 import CommentApiService from '../../services/CommentApiService';
+//import { showSuccessMessage, showErrorMessage } from '../../components/Toastr';
 
 class DeleteComment extends React.Component {
 
@@ -28,6 +29,7 @@ class DeleteComment extends React.Component {
       ).then(response => 
         {
           console.log(response);
+          //showSuccessMessage('Comentário excluído com sucesso!');
         }
       ).catch(error => 
         {

@@ -9,6 +9,8 @@ import FormGroup from '../../components/FormGroup';
 
 import CommentsTable from '../../components/CommentsTable'
 import CommentApiService from '../../services/CommentApiService';
+import { showSuccessMessage, showErrorMessage } from '../../components/Toastr';
+
 class ViewComments extends React.Component {
 
 
@@ -56,6 +58,9 @@ class ViewComments extends React.Component {
         this.service.delete(commentId)
             .then(response => {
                 this.find();
+
+                showSuccessMessage('Comentário excluído com sucesso!');
+
             }
             ).catch(error => {
                 console.log(error.response);
@@ -206,7 +211,7 @@ class ViewComments extends React.Component {
                                             <input type="long" className="form-control" id="inputDepartamentId" placeholder="Digite o Id da Resposta do Comentário" value={this.state.departamentId} onChange={(e) => { this.setState({ departamentId: e.target.value }) }} />
                                         </FormGroup>
                                         <br />  */}
-                                        <button onClick={this.find} type="button" className="btn btn-info">
+                                        <button onClick={this.find} type="button" className="btn btn-info" >
                                             <i className="pi pi-search"></i> Pesquisar
                                         </button>
                                         {/* <br />
@@ -221,7 +226,7 @@ class ViewComments extends React.Component {
                         <br />
                         <div className="row">
                             <div className="col-md-12">
-                                <button onClick={this.createComment} type="button" className="btn btn-success btn-cadastrar">
+                                <button onClick={this.createComment} type="button" className="btn btn-success btn-cadastrar" id="cadastrar_comentario">
                                     <i className="pi pi-plus"></i> Cadastrar Novo Comentário
                                 </button>
                             </div>
@@ -234,7 +239,8 @@ class ViewComments extends React.Component {
                                         delete={this.delete}
                                         edit={this.edit}
                                         answer={this.answer} 
-                                        card= {this.card}/>
+                                        card= {this.card}
+                                        />
                                 </div>
                             </div>
                         </div>
