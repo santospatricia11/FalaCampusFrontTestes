@@ -178,10 +178,10 @@ class CreateComment extends React.Component {
                                                     </FormGroup>
                                                     <br />
                                                     <br />
-                                                    <button onClick={this.create} type="button" className="btn btn-success">
+                                                    <button onClick={this.create} type="button" className="btn btn-success" id="button_salvar">
                                                         <i className="pi pi-save"></i> Salvar
                                                     </button>
-                                                    <button onClick={this.cancel} type="button" className="btn btn-danger btn-cancel">
+                                                    <button onClick={this.cancel} type="button" className="btn btn-danger btn-cancel" id="button_cancelar">
                                                         <i className="pi pi-times"></i> Cancelar
                                                     </button>
                                                 </fieldset>
