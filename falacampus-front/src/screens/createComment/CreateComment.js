@@ -160,9 +160,9 @@ class CreateComment extends React.Component {
                                                         value={this.state.authorId} 
                                                         onChange={(e) => { this.setState({ authorId: e.target.value }) }} />
                                                     </FormGroup>                                                     */}
-                                                    <FormGroup label="Autor do Comentário: *" htmlFor="inputUserAuthor" id="inputUserAuthor">
+                                                    <FormGroup label="Autor do Comentário: *" htmlFor="inputUserAuthor" >
                                                         <br />
-                                                        <SelectUser onChange={this.handleInputSelectUser} />
+                                                        <SelectUser onChange={this.handleInputSelectUser} id="inputUserAuthor"/>
                                                     </FormGroup>
                                                     <br />
                                                     {/* <FormGroup label="Id do Departamento: *" htmlFor="inputDepartamentId">
@@ -172,9 +172,9 @@ class CreateComment extends React.Component {
                                                         onChange={(e) => { this.setState({ departamentId: e.target.value }) }} />
                                                     </FormGroup> */}
                                                     
-                                                    <FormGroup label="Selecione o Departamento para o envio da crítica, sugestão ou elogio: *" htmlFor="inputDepartamentDestination" id="inputDepartamentDestination">
+                                                    <FormGroup label="Selecione o Departamento para o envio da crítica, sugestão ou elogio: *" htmlFor="inputDepartamentDestination" >
                                                         <br />
-                                                        <SelectDepartament onChange={this.handleInputSelectDepartament}/>
+                                                        <SelectDepartament onChange={this.handleInputSelectDepartament} id="inputDepartamentDestination"/>
                                                     </FormGroup>
                                                     <br />
                                                     <br />
