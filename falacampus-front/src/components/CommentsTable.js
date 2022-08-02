@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
+import Pagination from './Pagination';
 import './Style.css';
+
+let PageSize = 10;
+//let data = 30;
 
 export default props => {
 
+    const [currentPage, setCurrentPage] = useState(1);
+    //let rows;
+    
     const rows = props.comments.map(comment => {
+        
+        // const currentTableData = useMemo(() => {
+        // const firstPageIndex = (currentPage - 1) * PageSize;
+        // const lastPageIndex = firstPageIndex + PageSize;
+        // return adta.slice(firstPageIndex, lastPageIndex);
+        // }, [currentPage]);
+            
         return (
+            
             <tr key={comment.id}>
-                <td>{comment.id}</td>
+                {/* <td>{comment.id}</td> */}
                 <td>{comment.title}</td>
                 <td>{comment.message}</td>
                 <td>{comment.creationDate}</td>
@@ -17,31 +32,33 @@ export default props => {
                 {/* <td>{comment.answerId.id}</td> */}
                 <td className="col-md-2">
                     <button type="button" title="Responder"
-                        className="btn btn-info"
+                        className="btn btn-danger btn-space"
                         onClick={e => props.answer(comment.id)}>
                         <i className="pi pi-comment"></i>
                     </button>
                     <button type="button" title="Editar"
-                        className="btn btn-warning"
+                        className="btn btn-warning btn-space"
                         onClick={e => props.edit(comment.id)}>
                         <i className="pi pi-pencil"></i>
                     </button>
                     <button type="button" title="Excluir"
-                        className="btn btn-danger btn-delete"
+                        className="btn btn-primary btn-space"
                         onClick={e => props.delete(comment.id)}>
                         <i className="pi pi-trash"></i>
                     </button>
+
                 </td>
             </tr>
         )
     } )
 
     return (
+    <>
 
         <table className="table table-hover">
             <thead>
                 <tr className="table-active">
-                    <th scope="col">Id</th>
+                    {/* <th scope="col">Id</th> */}
                     <th scope="col">Título</th>
                     <th scope="col">Mensagem</th>
                     <th scope="col">Data/Hora de Criação</th>
@@ -57,5 +74,17 @@ export default props => {
                 {rows}
             </tbody>
         </table>
+
+        {/* <Pagination
+            className="pagination-bar"
+            currentPage={currentPage}
+            totalCount={data.length}
+            pageSize={PageSize}
+            onPageChange={page => setCurrentPage(page)}
+        /> */}
+
+    </>
     )
+
+    
 }

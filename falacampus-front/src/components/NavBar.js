@@ -9,7 +9,7 @@ function NavBar(props) {
 
         <nav className="navbar navbar-expand-lg navbar-light bg-nav">
             <div className="container-fluid">
-                <div className="col-md-3"><a href="/" className="navbar-brand"><Logo imageSrc={FalaCampus} /></a></div>
+                <div className="col-md-4"><a href="/" className="navbar-brand"><Logo imageSrc={FalaCampus} /></a></div>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -36,14 +36,14 @@ function NavBar(props) {
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Comentário</a>
                             <ul className="dropdown-menu">
-                                <li><NavBarItem href="/createComment" label="Criar Comentário" /></li>
+                                <li><NavBarItem href="/createComment" label="Cadastrar Comentário" /></li>
                                 <li><NavBarItem href="/viewComments" label="Listar Comentários" /></li>
                             </ul>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Resposta</a>
                             <ul className="dropdown-menu">
-                                <li><NavBarItem href="/CreateAnswer" label="Responder Comentário" /></li>
+                                <li><NavBarItem href="/CreateAnswer" label="Cadastrar Resposta" /></li>
                                 <li><NavBarItem href="/ViewAnswer" label="Listar Respostas" /></li>
                             </ul>
                         </li>

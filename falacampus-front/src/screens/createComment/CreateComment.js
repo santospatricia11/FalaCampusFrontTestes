@@ -36,11 +36,15 @@ class CreateComment extends React.Component {
     
         if(!this.state.title){
             errors.push('Campo Título é obrigatório!');
-        } 
+        } else if(!this.state.title.match(/[A-z 0-9]{5,50}$/)) {
+            errors.push('O Título do Comentário deve ter no mínimo 5 e no máximo 50 caracteres!');
+        }
 
         if(!this.state.message){
             errors.push('Campo Mensagem é obrigatório!');
-        } 
+        } else if(!this.state.message.match(/[A-z 0-9]{10,255}$/)) {
+            errors.push('A mensagem do Comentário deve ter no mínimo 10 e no máximo 255 caracteres!');
+        }
 
         if(!this.state.commentType){
             errors.push('É obrigatório informar o Tipo de Comentário!');
@@ -83,7 +87,7 @@ class CreateComment extends React.Component {
         }
         ).catch(error => {
             console.log(error.response);
-            showErrorMessage("O comentário não pode ser criado!")
+            // showErrorMessage("O comentário não pode ser criado!")
         }
         );
 
@@ -121,12 +125,12 @@ class CreateComment extends React.Component {
                                                 <fieldset>
                                                     <p>
                                                         <small id="messageHelp" className="form-text text-muted">
-                                                            * Todos os campos são obrigatórios para o envio de críticas, sugestões ou elogios.
+                                                            * Todos os campos são obrigatórios.
                                                         </small>
                                                     </p>
                                                     <FormGroup label="Título: *" htmlFor="inputCommentTitle">
                                                         <input type="text" className="form-control" id="inputCommentTitle"  minLength="5" maxlength="50"
-                                                        placeholder="Digite o título da mensagem" 
+                                                        placeholder="Digite o título do comentário" 
                                                         value={this.state.title} 
                                                         onChange={(e) => { this.setState({ title: e.target.value }) }} />
                                                     </FormGroup>

@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Fala Campus
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## IFPB Campus Monteiro - DAC - 2022.1
 
-### `npm start`
+Sistema de sugestões, críticas e elogios Fala Campus, voltado para a comunidade acadêmica do Instituto Federal da Paraíba, Campus Monteiro - PB.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Projeto apresentado na Disciplina de Desenvolvimento de Aplicações Corporativas, no 5° período do curso de Análise e Desenvolvimento de Sistemas, com o professor Elenilson Vieira
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Dependências para instalação:
+Node.js (versão 16.15.0 foi utilizada durante o desenvolvimento);
 
-### `npm test`
+Git.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm install -g yarn
 
-### `npm run build`
+yarn add bootswatch.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+yarn add react-router-dom@5.1.2 (versão 5.1.2 utilizada)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+yarn add axios
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+yarn add toastr
 
-### `npm run eject`
+yarn add primeicons
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Obtendo o código-fonte:
+Com o Git instalado em seu computador, abre um terminal de linha de comando (no Windows o Git Bash ou Terminal) .
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Cole o comando descrito abaixo:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+git clone https://github.com/moreiranat/falacampus-frontend.git
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Configurando e executando:
 
-## Learn More
+Na linha de comando, entre no diretório do projeto:
+cd /{caminho}/{até}/{repositório}/falacampus-frontend
+Ainda na linha de comando, instale todas as dependências da aplicação
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm install -g yarn
 
-### Code Splitting
+### Para a execução da aplicação, digite:
+npm start ou
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+yarn start
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
