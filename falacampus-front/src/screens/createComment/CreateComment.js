@@ -160,9 +160,9 @@ class CreateComment extends React.Component {
                                                         value={this.state.authorId} 
                                                         onChange={(e) => { this.setState({ authorId: e.target.value }) }} />
                                                     </FormGroup>                                                     */}
-                                                    <FormGroup label="Autor do Comentário: *" htmlFor="inputUserAuthor">
+                                                    <FormGroup label="Autor do Comentário: *" htmlFor="inputUserAuthor" id="inputUserAuthor">
                                                         <br />
-                                                        <SelectUser onChange={this.handleInputSelectUser}/>
+                                                        <SelectUser onChange={this.handleInputSelectUser} />
                                                     </FormGroup>
                                                     <br />
                                                     {/* <FormGroup label="Id do Departamento: *" htmlFor="inputDepartamentId">
@@ -172,7 +172,7 @@ class CreateComment extends React.Component {
                                                         onChange={(e) => { this.setState({ departamentId: e.target.value }) }} />
                                                     </FormGroup> */}
                                                     
-                                                    <FormGroup label="Selecione o Departamento para o envio da crítica, sugestão ou elogio: *" htmlFor="inputDepartamentDestination">
+                                                    <FormGroup label="Selecione o Departamento para o envio da crítica, sugestão ou elogio: *" htmlFor="inputDepartamentDestination" id="inputDepartamentDestination">
                                                         <br />
                                                         <SelectDepartament onChange={this.handleInputSelectDepartament}/>
                                                     </FormGroup>
