@@ -182,7 +182,7 @@ class ViewUsers extends React.Component {
                                             <input type="long" className="form-control" id="inputDepartamentId" placeholder="Digite o Id do Departamento" value={this.state.departamentId} onChange={(e) => { this.setState({ departamentId: e.target.value }) }} />
                                         </FormGroup> */}
                                         <br />
-                                        <button onClick={this.find} type="button" className="btn btn-info">
+                                        <button onClick={this.find} type="button" id='idPesquisar' className="btn btn-info">
 
                                             <i className="pi pi-search"></i> Pesquisar
                                         </button>
@@ -198,7 +198,7 @@ class ViewUsers extends React.Component {
                         <br />
                         <div className="row">
                             <div className="col-md-12">
-                                <button onClick={this.createUser} type="button" className="btn btn-success btn-cadastrar">
+                                <button onClick={this.createUser} type="button" id = "idNovoUser" className="btn btn-success btn-cadastrar">
                                     <i className="pi pi-plus"></i> Cadastrar Novo Usuário
                                 </button>
                             </div>
@@ -206,10 +206,10 @@ class ViewUsers extends React.Component {
                         <br />
                         <div className='row'>
                             <div className='col-lg-12' >
-                                <div className='bs-component'>
+                                <div className='bs-component' >
                                     <UsersTable users={this.state.users}
                                         delete={this.delete}
-                                        edit={this.edit} />
+                                        edit={this.edit}id = "idEdit"/>
                                 </div>
                             </div>
                         </div>
