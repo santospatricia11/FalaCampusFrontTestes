@@ -13,7 +13,7 @@ class ViewDepartaments extends React.Component {
 
     state = {
         name: '',
-        id: '',
+        id: 0,
         departaments: []
     }
     constructor() {
@@ -40,7 +40,7 @@ class ViewDepartaments extends React.Component {
 
     edit = (departamentId) => {
         this.props.history.push(`/updateDepartament/${departamentId}`);
-        //this.service.edit(departamentId)
+        this.service.edit(departamentId)
     }
 
     createDepartament = () => {
@@ -99,7 +99,7 @@ class ViewDepartaments extends React.Component {
 
             <div className="container">
                 <div className='row'>
-                    <div className='col-md-12'>
+                    <div className='col-md-12' style={this.styles.colMd612}>
                         <div className="bs-docs-section">
                             <Card title='Departamentos'>
                                 <form>
@@ -112,7 +112,7 @@ class ViewDepartaments extends React.Component {
                                             <input type="text" className="form-control" id="inputDepartamentName" placeholder="Digite o Nome do Departamento" value={this.state.name} onChange={(e) => { this.setState({ name: e.target.value }) }} />
                                         </FormGroup>
                                         <br />
-                                        <button onClick={this.find} type="button" className="btn btn-info">
+                                        <button onClick={this.find} type="button" id="btn-search" className="btn btn-info">
                                             <i className="pi pi-search"></i> Pesquisar
                                         </button>
                                     </fieldset>
@@ -122,7 +122,7 @@ class ViewDepartaments extends React.Component {
                         <br />
                         <div className="row">
                             <div className="col-md-12">
-                                <button onClick={this.createDepartament} type="button" className="btn btn-success btn-cadastrar">
+                                <button onClick={this.createDepartament} id="btn-cadastrar" type="button" className="btn btn-success btn-cadastrar">
                                     <i className="pi pi-plus"></i> Cadastrar Novo Departamento
                                 </button>
                             </div>
@@ -141,6 +141,11 @@ class ViewDepartaments extends React.Component {
                 </div >
             </div >
         )
+    }
+    styles = {
+        colMd12: {
+            position: 'relative'
+        }
     }
 }
 

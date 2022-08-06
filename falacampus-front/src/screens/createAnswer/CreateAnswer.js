@@ -16,8 +16,8 @@ class CreateAnswer extends React.Component {
 
     state = {
         message: '',
-        commentId: '',
-        authorId: '',
+        commentId: 0,
+        authorId: 0,
     }
 
     componentDidMount() {
@@ -144,7 +144,7 @@ class CreateAnswer extends React.Component {
                                                     </p>
                                                     <FormGroup label="Selecione o Comentário para o envio da resposta: *" htmlFor="inputDepartamentDestination">
                                                         <br />
-                                                        <SelectComment onChange={this.handleInputSelectComment} />
+                                                        <SelectComment id="select-comment" onChange={this.handleInputSelectComment} />
                                                     </FormGroup>
                                                     <br />
                                                     {/* <FormGroup label="Id do Comentário: *" htmlFor="inputCommentId">
@@ -169,14 +169,14 @@ class CreateAnswer extends React.Component {
                                                     </FormGroup>   */}
                                                     <FormGroup label="Autor do Comentário: *" htmlFor="inputUserAuthor">
                                                         <br />
-                                                        <SelectUser onChange={this.handleInputSelectUser} />
+                                                        <SelectUser id="select-author" onChange={this.handleInputSelectUser} />
                                                     </FormGroup>
                                                     <br />
                                                     <br />
-                                                    <button onClick={this.create} type="button" className="btn btn-success">
+                                                    <button onClick={this.create} type="button" id="button-answer" className="btn btn-success">
                                                         <i className="pi pi-save"></i> Responder
                                                     </button>
-                                                    <button onClick={this.cancel} type="button" className="btn btn-danger btn-cancel">
+                                                    <button onClick={this.cancel} type="button" id="button-cancel" className="btn btn-danger btn-cancel">
                                                         <i className="pi pi-times"></i> Cancelar
                                                     </button>
                                                 </fieldset>

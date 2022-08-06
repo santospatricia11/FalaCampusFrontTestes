@@ -13,7 +13,7 @@ import DepartamentApiService from '../../services/DepartamentApiService';
 class UpdateDepartament extends React.Component {
 
     state = {
-        id: '',
+        id: 0,
         name: '',
     }
     constructor() {
@@ -121,10 +121,10 @@ class UpdateDepartament extends React.Component {
                                                         <div className="valid-feedback">Departamento atualizado!</div>
                                                     </FormGroup>
                                                     <br />
-                                                    <button onClick={this.update} type="button" className="btn btn-success">
+                                                    <button onClick={this.update} type="button" id="button-update" className="btn btn-success">
                                                         <i className="pi pi-save"></i> Atualizar
                                                     </button>
-                                                    <button onClick={this.cancel} type="button" className="btn btn-danger btn-cancel">
+                                                    <button onClick={this.cancel} type="button" id="button-cancel" className="btn btn-danger btn-cancel">
                                                         <i className="pi pi-times"></i> Cancelar
                                                     </button>
 
