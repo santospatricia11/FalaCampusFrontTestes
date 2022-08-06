@@ -13,7 +13,7 @@ class ViewDepartaments extends React.Component {
 
     state = {
         name: '',
-        id: 0,
+        id: '',
         departaments: []
     }
     constructor() {
