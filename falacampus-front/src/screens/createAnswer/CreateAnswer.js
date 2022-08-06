@@ -16,14 +16,14 @@ class CreateAnswer extends React.Component {
 
     state = {
         message: '',
-        commentId: 0,
-        authorId: 0,
+        commentId: '',
+        authorId: '',
     }
 
     componentDidMount() {
         const params = this.props.match.params;
         const id = params.id;
-        this.findById(id);
+        this.findCommentById(id);
     }
 
     // componentWillUnmount() {
@@ -34,12 +34,12 @@ class CreateAnswer extends React.Component {
         this.service = new AnswerApiService();
     }
 
-    findById = (commentId) => {
+    findCommentById = (commentId) => {
         //axios.get(`http://localhost:8080/api/comment?id=${commentId}`)
         this.service.find(commentId)
 
             .then(response => {
-                const comment = response.data[0];
+                const comment = response.data;
                 const id = comment.id;
                 const title = comment.title;
                 const message = comment.message;
@@ -48,6 +48,7 @@ class CreateAnswer extends React.Component {
                 const departament = comment.departament;
 
                 this.setState({ id, title, message, commentType, user, departament });
+                
             }
 
             ).catch(error => {
@@ -77,7 +78,7 @@ class CreateAnswer extends React.Component {
     };
 
 
-    create = async () => {
+    create = async (id) => {
 
         const errors = this.validate();
 

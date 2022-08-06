@@ -42,8 +42,8 @@ class UpdateUser extends React.Component {
     //     this.clear();
     // }
 
-    findById = () => {
-        this.service.find(this.state.id)
+    findById = (id) => {
+        this.service.find(id)
             .then(response => {
                 console.log(response);
                 const user = response.data;

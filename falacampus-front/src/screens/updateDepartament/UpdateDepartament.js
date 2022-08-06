@@ -13,7 +13,7 @@ import DepartamentApiService from '../../services/DepartamentApiService';
 class UpdateDepartament extends React.Component {
 
     state = {
-        id: "",
+        id: '',
         name: '',
     }
     constructor() {
@@ -26,11 +26,11 @@ class UpdateDepartament extends React.Component {
         this.findById(id);
     }
 
-    findById = () => {
+    findById = (id) => {
         // axios.get(`http://localhost:8080/api/departament?id=${departamentId}`)
-        this.service.find(this.state.id)
+        this.service.find(id)
             .then(response => {
-                const departament = response.data[0];
+                const departament = response.data;
                 const id = departament.id;
                 const name = departament.name;
 

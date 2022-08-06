@@ -13,7 +13,7 @@ import { showSuccessMessage, showErrorMessage } from '../../components/Toastr';
 class ViewAnswers extends React.Component {
 
     state = {
-        id: 0,
+        id: '',
         message: '',
         comment: {
             commentId: 0

@@ -40,7 +40,7 @@ class ViewDepartaments extends React.Component {
 
     edit = (departamentId) => {
         this.props.history.push(`/updateDepartament/${departamentId}`);
-        this.service.edit(departamentId)
+        //this.service.edit(departamentId)
     }
 
     createDepartament = () => {
@@ -99,7 +99,7 @@ class ViewDepartaments extends React.Component {
 
             <div className="container">
                 <div className='row'>
-                    <div className='col-md-12' style={this.styles.colMd612}>
+                    <div className='col-md-12'>
                         <div className="bs-docs-section">
                             <Card title='Departamentos'>
                                 <form>
@@ -141,11 +141,6 @@ class ViewDepartaments extends React.Component {
                 </div >
             </div >
         )
-    }
-    styles = {
-        colMd12: {
-            position: 'relative'
-        }
     }
 }
 
