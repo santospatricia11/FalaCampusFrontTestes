@@ -167,7 +167,7 @@ class CreateAnswer extends React.Component {
                                                         value={this.state.authorId} 
                                                         onChange={(e) => { this.setState({ authorId: e.target.value }) }} />
                                                     </FormGroup>   */}
-                                                    <FormGroup label="Autor do Comentário: *" htmlFor="inputUserAuthor">
+                                                    <FormGroup label="Autor da Resposta: *" htmlFor="inputUserAuthor">
                                                         <br />
                                                         <SelectUser id="select-author" onChange={this.handleInputSelectUser} />
                                                     </FormGroup>
