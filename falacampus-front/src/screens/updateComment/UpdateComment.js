@@ -3,11 +3,12 @@ import './UpdateComment.css';
 import '../../components/Style.css';
 import { withRouter } from 'react-router-dom';
 //import axios from 'axios';
+import CommentApiService from '../../services/CommentApiService';
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
+import SelectDepartament from '../../components/SelectDepartament';
+import SelectUser from '../../components/SelectUser';
 import { showSuccessMessage, showErrorMessage } from '../../components/Toastr';
-
-import CommentApiService from '../../services/CommentApiService';
 
 class UpdateComment extends React.Component {
 
@@ -17,7 +18,7 @@ class UpdateComment extends React.Component {
          message: '',
          commentType: '',
          user: {
-             id: 0,
+             userId: 0,
              name: '',
              email: '',
              registration: 0,
@@ -28,29 +29,26 @@ class UpdateComment extends React.Component {
              departamentId: 0,
              name:''
          }
-     }
-    
+    }
+      
+    constructor() {
+        super();
+        this.service = new CommentApiService();      
+    }
+
     componentDidMount() {
         const params = this.props.match.params;
         const id = params.id;
         this.findById(id);
-
-         //this.service.findById(this.props.match.params.id)
-
-    }
-    constructor() {
-        super();
-        this.service = new CommentApiService();
-       
     }
 
     // componentWillUnmount(){
     //     this.clear();
     // }
 
-    findById = (commentId) => {
+    findById = (id) => {
         //axios.get(`http://localhost:8080/api/comment?id=${commentId}`)
-        this.service.find(commentId)
+        this.service.find(id)
 
             .then(response => {
                 const comment = response.data;
@@ -61,12 +59,13 @@ class UpdateComment extends React.Component {
                 const user = comment.user;
                 const departament = comment.departament;
 
-                this.setState({ id:id, title:title, message:message, commentType:commentType, user:user, departament:departament});
-                console.log(this.state.id,this.state.departament);
+                this.setState({ id:id, title:title, message:message, commentType:commentType});
+                //console.log(this.state.id,this.state.departament);
             }
 
             ).catch(error => {
                 console.log(error.response);
+                console.log(error.message);
             }
             );
     }
@@ -110,8 +109,8 @@ class UpdateComment extends React.Component {
                 title: this.state.title,
                 message: this.state.message,
                 commentType: this.state.commentType,
-                 user: this.state.user.id,
-                 departamentId: this.state.departament.id
+                user: this.state.user.id,
+                departamentId: this.state.departament.id
             }
         ).then(response => {
             console.log(response);
@@ -120,7 +119,7 @@ class UpdateComment extends React.Component {
         }
         ).catch(error => {
             console.log(error.response);
-            showErrorMessage('O comentário não pode ser atualizado!');
+            //showErrorMessage('O comentário não pode ser atualizado!');
         }
         );
 
@@ -175,15 +174,18 @@ class UpdateComment extends React.Component {
                                                             <option value="COMPLIMENT">ELOGIO</option>
                                                         </select>
                                                     </FormGroup>
-                                                    <br />
-                                                    {/* <FormGroup label="Id do Autor do Comentário: *" htmlFor="inputAuthorId">
-                                                        <input type="long" className="form-control" id="inputAuthorId" value={this.state.user} name="authorId" onChange={(e) => { this.setState({ 'user.id': e.target.value }) }} />
+                                                    {/* <br />
+                                                    <FormGroup label="Autor do Comentário: *" htmlFor="inputUserAuthor" >
+                                                        <br />
+                                                        <SelectUser onChange={this.handleInputSelectUser} id="inputUserAuthor"/>
                                                     </FormGroup>
                                                     <br />
-                                                    <FormGroup label="Id do Departamento: *" htmlFor="inputDepartamentId">
-                                                        <input type="long" className="form-control" id="inputDepartamentId" value={this.state.departament} name="departamentId" onChange={(e) => { this.setState({ 'departament.id': e.target.value }) }} />
+                                                    <FormGroup label="Selecione o Departamento para o envio da crítica, sugestão ou elogio: *" htmlFor="inputDepartamentDestination" >
+                                                        <br />
+                                                        <SelectDepartament onChange={this.handleInputSelectDepartament} id="inputDepartamentDestination"/>
                                                     </FormGroup>
                                                     <br /> */}
+                                                    <br />
                                                     <button onClick={this.update} type="button" id="button-update" className="btn btn-success">
                                                         <i className="pi pi-save"></i> Atualizar
                                                     </button>

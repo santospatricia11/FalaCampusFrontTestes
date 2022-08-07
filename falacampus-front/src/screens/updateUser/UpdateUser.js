@@ -142,8 +142,8 @@ class UpdateUser extends React.Component {
     }
 
     cancel = () => {
-        this.service.delete('/');
-        //props.history.push('/');
+        this.props.history.push('/');
+        //this.service.delete('/');
     }
 
     render() {
