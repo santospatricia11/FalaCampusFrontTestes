@@ -21,7 +21,7 @@ const SelectComment = (props) => {
     },[]);
 
     return (
-        <select  id={props.id} onChange={props.onChange}>
+        <select  className="form-control" id={props.id} onChange={props.onChange}>
             <option className="form-control" value="">Selecione o comentário</option>
             {comments.map( comment => {
                 const {id, message} = comment;

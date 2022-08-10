@@ -3,7 +3,7 @@ import './ViewComments.css';
 import '../../components/Style.css';
 import { withRouter } from 'react-router-dom';
 //import CommentsCard from '../../components/CommentsCard';
-
+import axios from 'axios';
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
 
@@ -124,8 +124,8 @@ class ViewComments extends React.Component {
             params = `${params}creationDate=${this.state.creationDate}`;
         }
 
-        //axios.get(`http://localhost:8080/api/comment/${params}`)
-        this.service.find(this.state.id)
+        axios.get(`http://localhost:8080/api/comment/${params}`)
+        //this.service.find(this.state.id)
             .then(response => {
                 const comments = response.data;
                 this.setState({ comments });

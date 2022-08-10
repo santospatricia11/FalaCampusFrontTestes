@@ -2,7 +2,7 @@ import React from 'react';
 import './ViewDepartaments.css';
 import '../../components/Style.css';
 import { withRouter } from 'react-router-dom';
-//import axios from 'axios';
+import axios from 'axios';
 
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
@@ -22,7 +22,7 @@ class ViewDepartaments extends React.Component {
     }
 
     componentDidMount() {
-        this.find();
+        this.findAll();
 
     }
 
@@ -59,7 +59,7 @@ class ViewDepartaments extends React.Component {
             params = `${params}id=${this.state.id}`;
         }
 
-        if (this.state.id !== '') {
+        if (this.state.name !== '') {
             if (params !== '?') {
                 params = `${params}&`;
             }
@@ -67,8 +67,8 @@ class ViewDepartaments extends React.Component {
             params = `${params}name=${this.state.name}`;
         }
 
-        //axios.get(`http://localhost:8080/api/departament/${params}`)
-        this.service.get(this.state.id)
+        axios.get(`http://localhost:8080/api/departament/${params}`)
+        //this.service.get(this.state.id)
             .then(response => {
                 const departaments = response.data;
                 this.setState({ departaments });

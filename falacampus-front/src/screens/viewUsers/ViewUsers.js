@@ -2,7 +2,7 @@ import React from 'react';
 import './ViewUsers.css';
 import '../../components/Style.css';
 import { withRouter } from 'react-router-dom';
-
+import axios from 'axios';
 
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
@@ -14,12 +14,12 @@ class ViewUsers extends React.Component {
 
     state = {
         name: '',
-        id: 0,
+        id: '',
         email: '',
-        registration: 0,
+        registration: '',
         role: '',
         departament: {
-            departamentId: 0,
+            departamentId: '',
             name: ''
         },
         users: []
@@ -57,10 +57,10 @@ class ViewUsers extends React.Component {
     }
 
     find = () => {
-        this.service.find.id(this.state.id)
+        //this.service.find(this.state.id)
         var params = '?';
 
-        if (this.state.id !== 0) {
+        if (this.state.id !== '') {
             if (params !== '?') {
                 params = `${params}&`;
             }
@@ -100,16 +100,16 @@ class ViewUsers extends React.Component {
             params = `${params}role=${this.state.role}`;
         }
 
-        if (this.state.departament.id !== 0) {
+        if (this.state.departament.departamentId !== '') {
             if (params !== '?') {
                 params = `${params}&`;
             }
 
-            params = `${params}departamentId=${this.state.departamentId}`;
+            params = `${params}departamentId=${this.state.departament.departamentId}`;
         }
 
-        //axios.get(`http://localhost:8080/api/user/${params}`)
-        this.service.get(this.state.id)
+        axios.get(`http://localhost:8080/api/user/${params}`)
+        //this.service.get(this.state.id)
             .then(response => {
                 const users = response.data;
                 this.setState({ users });
